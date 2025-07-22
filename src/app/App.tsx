@@ -1,8 +1,8 @@
-import { Routes, Link } from "react-router-dom";
-import { Suspense } from "react";
+import { Link } from "react-router-dom";
 import "@/app/styles/index.scss";
 import { useTheme } from "@/app/providers/ThemeProvider/lib/useTheme";
 import { classNames } from "@/shared/lib/classNames/classNames";
+import { AppRouter } from "./providers/router";
 
 function App() {
   const { theme, toggleTheme } = useTheme();
@@ -11,10 +11,8 @@ function App() {
     <div className={classNames("app", {}, [theme])}>
       <button onClick={toggleTheme}>Toggle theme</button>
       <Link to="/">Counter</Link>
-      <Link to="/test">Test</Link>
-      <Suspense fallback={<div>Loading...</div>}>
-        <Routes></Routes>
-      </Suspense>
+      <Link to="/about">About</Link>
+      <AppRouter />
     </div>
   );
 }
