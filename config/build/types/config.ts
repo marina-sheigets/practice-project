@@ -11,3 +11,8 @@ export type BuildOptions = {
     isDev: boolean;
     port: number;
 }
+
+export interface BuildEnv {
+    mode: BuildMode;
+    port: number;
+}
