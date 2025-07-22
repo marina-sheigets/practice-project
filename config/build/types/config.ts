@@ -4,7 +4,9 @@ export interface BuildPaths {
     entry: string;
     build: string,
     html: string,
+    src: string,
 }
+
 export type BuildOptions = {
     mode: BuildMode;
     paths: BuildPaths;
