@@ -1,15 +1,20 @@
 import { Route, Routes, Link } from "react-router-dom";
-import Counter from "./components/Counter/Counter";
+import { lazy, Suspense } from "react";
+
+const CounterPage = lazy(() => import("./components/Counter/Counter"));
+const TestPage = lazy(() => import("./components/Test/Test"));
 
 function App() {
   return (
     <div>
       <Link to="/">Counter</Link>
       <Link to="/test">Test</Link>
-      <Routes>
-        <Route path="/" element={<Counter />} />
-        <Route path="/test" element={<div>Test</div>} />
-      </Routes>
+      <Suspense fallback={<div>Loading...</div>}>
+        <Routes>
+          <Route path="/" element={<CounterPage />} />
+          <Route path="/test" element={<TestPage />} />
+        </Routes>
+      </Suspense>
     </div>
   );
 }
