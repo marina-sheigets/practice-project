@@ -21,8 +21,12 @@ export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
         use: [
             // Creates `style` nodes from JS strings
             isDev ? "style-loader" : MiniCssExtractPlugin.loader,
-            // Translates CSS into CommonJS
-            "css-loader",
+            {
+                loader: "css-loader",
+                options: {
+                    modules: true,
+                }
+            },
             // Compiles Sass to CSS
             "sass-loader",
         ],
