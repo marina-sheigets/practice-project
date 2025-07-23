@@ -1,3 +1,4 @@
+import { AboutPage } from "@/pages/AboutPage";
 import { RouteProps } from "react-router-dom";
 
 export enum AppRoutes {
@@ -17,6 +18,6 @@ export const routeConfig: Record<AppRoutes, RouteProps> = {
   },
   [AppRoutes.ABOUT]: {
     path: RoutePath.about,
-    element: <div>About</div>,
+    element: <AboutPage />,
   },
 };
