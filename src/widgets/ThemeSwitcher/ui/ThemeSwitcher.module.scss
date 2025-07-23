@@ -1,0 +1,20 @@
+.themeSwitcher {
+    background: none;
+    border: none;
+    padding: 0;
+    color: var(--inverted-primary-color);
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 10px;
+    margin-left: auto;
+    
+    > svg {
+        width: 40px;
+        height: 40px;
+        
+        > g {
+            fill: var(--inverted-primary-color);
+        }
+    }
+}
