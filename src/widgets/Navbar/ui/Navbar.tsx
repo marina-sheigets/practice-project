@@ -1,6 +1,6 @@
 import { classNames } from "@/shared/lib/classNames/classNames";
 import * as styles from "./Navbar.module.scss";
-import { Link } from "react-router-dom";
+import { AppLink, AppLinkTheme } from "@/shared/ui/AppLink/AppLink";
 
 interface NavbarProps {
   className?: string;
@@ -10,10 +10,16 @@ function Navbar({ className }: Readonly<NavbarProps>) {
   return (
     <div className={classNames(styles.navbar, {}, [className])}>
       <div className={styles.links}>
-        <Link to="/" className={styles.mainLink}>
+        <AppLink
+          to="/"
+          className={styles.mainLink}
+          theme={AppLinkTheme.SECONDARY}
+        >
           Counter
-        </Link>
-        <Link to="/about">About</Link>
+        </AppLink>
+        <AppLink to="/about" theme={AppLinkTheme.SECONDARY}>
+          About
+        </AppLink>
       </div>
     </div>
   );
