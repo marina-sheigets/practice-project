@@ -1,12 +1,15 @@
 import { classNames } from "@/shared/lib/classNames/classNames";
 import * as styles from "./Navbar.module.scss";
 import { AppLink, AppLinkTheme } from "@/shared/ui/AppLink/AppLink";
+import { useTranslation } from "react-i18next";
 
 interface NavbarProps {
   className?: string;
 }
 
 function Navbar({ className }: Readonly<NavbarProps>) {
+  const { t } = useTranslation();
+
   return (
     <div className={classNames(styles.navbar, {}, [className])}>
       <div className={styles.links}>
@@ -15,10 +18,10 @@ function Navbar({ className }: Readonly<NavbarProps>) {
           className={styles.mainLink}
           theme={AppLinkTheme.SECONDARY}
         >
-          Counter
+          {t("Main")}
         </AppLink>
         <AppLink to="/about" theme={AppLinkTheme.SECONDARY}>
-          About
+          {t("About")}
         </AppLink>
       </div>
     </div>
