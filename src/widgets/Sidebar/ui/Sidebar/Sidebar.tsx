@@ -4,7 +4,7 @@ import { FC, useState } from "react";
 import { ThemeSwitcher } from "@/widgets/ThemeSwitcher";
 import { Button } from "@/shared/ui/Button/Button";
 import { useTranslation } from "react-i18next";
-import i18n from "@/shared/config/i18n/i18n";
+import { LanguageSwitcher } from "@/widgets/LanguageSwitcher";
 
 interface SidebarProps {
   className?: string;
@@ -19,10 +19,6 @@ export const Sidebar: FC<SidebarProps> = ({ className }) => {
     setIsCollapsed((prev) => !prev);
   };
 
-  const onToggleLang = () => {
-    i18n.changeLanguage(i18n.language === "en" ? "uk" : "en");
-  };
-
   return (
     <div
       className={classNames(
@@ -35,7 +31,7 @@ export const Sidebar: FC<SidebarProps> = ({ className }) => {
 
       <div className={styles.switchers}>
         <ThemeSwitcher />
-        <Button onClick={onToggleLang}>{t("Change language")}</Button>
+        <LanguageSwitcher className={styles.languageSwitcher} />
       </div>
     </div>
   );
