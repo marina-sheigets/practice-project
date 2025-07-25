@@ -7,8 +7,11 @@
     "build:prod": "webpack --env mode=production",
     "build:dev": "webpack --env mode=development",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint . --ext .ts,.tsx",
-    "lint:fix": "eslint . --ext .ts,.tsx --fix"
+    "lint:ts": "eslint . --ext .ts,.tsx",
+    "lint:ts:fix": "eslint . --ext .ts,.tsx --fix",
+    "lint:style": "stylelint \"src/**/*.{css,scss}\"",
+    "lint:style:fix": "stylelint \"src/**/*.{css,scss}\" --fix",
+    "lint": "npm run lint:ts && npm run lint:style"
   },
   "keywords": [],
   "author": "",
@@ -35,6 +38,8 @@
     "sass": "^1.89.2",
     "sass-loader": "^16.0.5",
     "style-loader": "^4.0.0",
+    "stylelint": "^16.22.0",
+    "stylelint-config-standard-scss": "^15.0.1",
     "ts-loader": "^9.2.6",
     "ts-node": "^10.9.2",
     "typescript": "^5.8.3",
