@@ -3,8 +3,10 @@ import tseslint from '@typescript-eslint/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
 import reactPlugin from 'eslint-plugin-react';
 import globals from 'globals';
+import i18next from 'eslint-plugin-i18next';
 
 export default [
+    i18next.configs['flat/recommended'],
     {
         ignores: [
             'build/',
