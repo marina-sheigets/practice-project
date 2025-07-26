@@ -10,7 +10,7 @@ interface LanguageSwitcherProps {
   className?: string;
 }
 
-export const LanguageSwitcher: FC<LanguageSwitcherProps> = ({ className }) => {
+const LanguageSwitcher: FC<LanguageSwitcherProps> = ({ className }) => {
   const { t } = useTranslation();
 
   const onToggleLang = () => {

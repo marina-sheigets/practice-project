@@ -39,6 +39,10 @@ const config: Config = {
   // The test environment that will be used for testing
   testEnvironment: "jsdom",
 
+  globals: {
+    __IS_DEV__: true,
+  },
+
   // The glob patterns Jest uses to detect test files
   testMatch: [
     "<rootDir>/src/**/**/?(*.)+(spec|test).?([mc])[jt]s?(x)",
@@ -56,6 +60,7 @@ const config: Config = {
         useESM: true,
       },
     ],
+    "^.+\\.svg$": "<rootDir>/config/jest/svgTransform.js"
   },
 
   setupFilesAfterEnv: ["<rootDir>/config/jest/setupTests.ts"],
