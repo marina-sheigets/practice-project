@@ -14,7 +14,7 @@
             "@/*": ["src/*"]
         }
     },
-    "include": ["src/**/*", "src/**/*.test.ts"],
+    "include": ["src/**/*", "src/**/*.test.ts", "config/jest/setupTests.ts"],
     "exclude": [
         "node_modules",
         "build",

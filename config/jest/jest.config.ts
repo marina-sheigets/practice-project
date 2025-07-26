@@ -41,8 +41,9 @@ const config: Config = {
 
   // The glob patterns Jest uses to detect test files
   testMatch: [
-    "<rootDir>/src/**/?(*.)+(spec|test).?([mc])[jt]s?(x)",
-    "<rootDir>/src/**/*.test.ts"
+    "<rootDir>/src/**/**/?(*.)+(spec|test).?([mc])[jt]s?(x)",
+    "<rootDir>/src/**/*.test.ts",
+    "<rootDir>/src/**/**/*.test.tsx"
   ],
 
   preset: "ts-jest/presets/default-esm",
@@ -55,6 +56,14 @@ const config: Config = {
         useESM: true,
       },
     ],
+  },
+
+  setupFilesAfterEnv: ["<rootDir>/config/jest/setupTests.ts"],
+  // recognize @/ as src/
+  moduleNameMapper: {
+    "^@/(.*)$": "<rootDir>/src/$1",
+    "\\.module\\.(css|sass|scss)$": "identity-obj-proxy",
+    "\\.(css|sass|scss)$": "<rootDir>/config/jest/styleMock.ts"
   },
 };
 

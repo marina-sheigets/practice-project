@@ -52,5 +52,14 @@ export default [
                 }
             ]
         },
+        overrides: [
+            {
+                files: ['**/*.test.{ts,tsx}', '**/*.spec.{ts,tsx}'],
+                rules: {
+                    'i18next/no-literal-string': 'off'
+                }
+            }
+        ]
     },
+
 ];
