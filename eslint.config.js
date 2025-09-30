@@ -1,46 +1,50 @@
-import js from '@eslint/js';
-import tseslint from '@typescript-eslint/eslint-plugin';
-import tsParser from '@typescript-eslint/parser';
-import reactPlugin from 'eslint-plugin-react';
-import globals from 'globals';
-import i18next from 'eslint-plugin-i18next';
-import jest from 'eslint-plugin-jest';
+// For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
+import storybook from "eslint-plugin-storybook"
+
+import js from "@eslint/js"
+import tseslint from "@typescript-eslint/eslint-plugin"
+import tsParser from "@typescript-eslint/parser"
+import reactPlugin from "eslint-plugin-react"
+import globals from "globals"
+import i18next from "eslint-plugin-i18next"
+import jest from "eslint-plugin-jest"
 
 export default [
-    i18next.configs['flat/recommended'],
-    jest.configs['flat/recommended'],
+    i18next.configs["flat/recommended"],
+    jest.configs["flat/recommended"],
     {
         ignores: [
-            'build/',
-            'node_modules/',
-            'public/',
-            'src/shared/lib/tests/',
-            '**/*.d.ts',
-            'webpack.config.ts',
-            '**/*config',
-        ],
+            "build/",
+            "node_modules/",
+            "public/",
+            "src/shared/lib/tests/",
+            "**/*.d.ts",
+            "webpack.config.ts",
+            "**/*config"
+        ]
     },
     js.configs.recommended,
     {
-        files: ['**/*.ts', '**/*.tsx'],
+        files: ["**/*.ts", "**/*.tsx"],
         languageOptions: {
             globals: {
-                ...globals.browser,
+                ...globals.browser
             },
             parser: tsParser,
             parserOptions: {
-                project: './tsconfig.json',
+                project: "./tsconfig.json",
                 ecmaVersion: 2021,
-                sourceType: 'module',
-                ecmaFeatures: { jsx: true },
-            },
+                sourceType: "module",
+                ecmaFeatures: { jsx: true }
+            }
         },
         plugins: {
-            '@typescript-eslint': tseslint,
-            react: reactPlugin,
+            "@typescript-eslint": tseslint,
+            react: reactPlugin
         },
         rules: {
             semi: "error",
+            doubleQuote: "error",
             "prefer-const": "error",
             "no-unused-vars": "off", // Turn off base rule for TypeScript files
             "@typescript-eslint/no-unused-vars": [
@@ -48,16 +52,16 @@ export default [
                 {
                     args: "after-used",
                     vars: "all",
-                    varsIgnorePattern: "^_",
+                    varsIgnorePattern: "^_"
                 }
             ]
-        },
+        }
     },
     {
-        files: ['**/*.test.{ts,tsx}', '**/*.spec.{ts,tsx}'],
+        files: ["**/*.test.{ts,tsx}", "**/*.spec.{ts,tsx}"],
         rules: {
-            'i18next/no-literal-string': 'off'
+            "i18next/no-literal-string": "off"
         }
-    }
-
-];
+    },
+    ...storybook.configs["flat/recommended"]
+]

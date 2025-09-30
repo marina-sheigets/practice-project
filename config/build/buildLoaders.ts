@@ -1,58 +1,44 @@
-import MiniCssExtractPlugin from "mini-css-extract-plugin";
-import webpack from "webpack";
-import { BuildOptions } from "./types/config";
+import MiniCssExtractPlugin from "mini-css-extract-plugin"
+import webpack from "webpack"
+import { BuildOptions } from "./types/config"
+import { buildCssLoader } from "./loaders/buildCssLoader"
 
-export function buildLoaders(options: BuildOptions): webpack.RuleSetRule[] {
-    const { isDev } = options;
+export function buildLoaders(
+    options: BuildOptions
+): webpack.RuleSetRule[] {
+    const { isDev } = options
 
     const fileLoader = {
         test: /\.(png|jpe?g|gif|woff2|woff)$/i,
         use: [
             {
-                loader: "file-loader",
+                loader: "file-loader"
             }
         ]
     }
 
     const svgLoader = {
         test: /\.svg$/,
-        use: ["@svgr/webpack"],
-    };
+        use: ["@svgr/webpack"]
+    }
 
     const typescriptLoader = {
         test: /\.tsx?$/,
         use: {
             loader: "ts-loader",
             options: {
-                transpileOnly: true,
+                transpileOnly: true
             }
         },
-        exclude: /node_modules/,
-    };
-
-    const cssLoader = {
-        test: /\.s[ac]ss$/i,
-        use: [
-            // Creates `style` nodes from JS strings
-            isDev ? "style-loader" : MiniCssExtractPlugin.loader,
-            {
-                loader: "css-loader",
-                options: {
-                    modules: {
-                        auto: (resPath: string) => Boolean(resPath.includes(".module.")),//apply only for css modules
-                        localIdentName: isDev ? "[path][name]__[local]" : "[hash:base64:8]",
-                    },
-                }
-            },
-            // Compiles Sass to CSS
-            "sass-loader",
-        ],
+        exclude: /node_modules/
     }
+
+    const cssLoader = buildCssLoader(isDev)
 
     return [
         fileLoader,
         svgLoader,
         typescriptLoader,
-        cssLoader,
+        cssLoader
     ]
 }
