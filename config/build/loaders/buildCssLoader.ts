@@ -17,7 +17,7 @@ export function buildCssLoader(isDev: boolean) {
                                 resPath.includes(".module.")
                             ), //apply only for css modules
                         localIdentName: isDev
-                            ? "[path][name]__[local]"
+                            ? "[path][name]__[local]--[hash:base64:5]"
                             : "[hash:base64:8]"
                     }
                 }
