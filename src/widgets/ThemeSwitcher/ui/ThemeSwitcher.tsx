@@ -6,7 +6,7 @@ import LightIcon from "@/shared/assets/icons/light-mode.svg";
 import DarkIcon from "@/shared/assets/icons/dark-mode.svg";
 import { Button } from "@/shared/ui/Button/Button";
 
-interface ThemeSwitcherProps {
+export interface ThemeSwitcherProps {
   className?: string;
 }
 
