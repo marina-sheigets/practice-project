@@ -14,7 +14,7 @@ const preview: Preview = {
     },
     decorators: [
         (Story) => StyleDecorator(Story),
-        (Story) => ThemeDecorator(Theme.DARK)(Story)
+        (Story) => ThemeDecorator(Theme.LIGHT)(Story)
     ]
 }
 

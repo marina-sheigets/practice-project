@@ -1,6 +1,7 @@
 import webpack from "webpack"
 import { BuildOptions } from "./types/config"
 import { buildCssLoader } from "./loaders/buildCssLoader"
+import { buildSvgLoader } from "./loaders/buildSvgLoader"
 
 export function buildLoaders(
     options: BuildOptions
@@ -16,10 +17,7 @@ export function buildLoaders(
         ]
     }
 
-    const svgLoader = {
-        test: /\.svg$/,
-        use: ["@svgr/webpack"]
-    }
+    const svgLoader = buildSvgLoader()
 
     const typescriptLoader = {
         test: /\.tsx?$/,

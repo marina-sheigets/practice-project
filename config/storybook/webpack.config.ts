@@ -1,7 +1,8 @@
-import { Configuration } from "webpack"
+import { Configuration, RuleSetRule } from "webpack"
 import { buildCssLoader } from "../build/loaders/buildCssLoader"
 import { BuildPaths } from "../build/types/config"
 import path from "path"
+import { buildSvgLoader } from "../build/loaders/buildSvgLoader"
 
 /**
  * Storybook webpack config overrides the default one
@@ -36,7 +37,25 @@ export default ({
         }
     }
 
-    config.module?.rules?.push(buildCssLoader(true))
+    if (config.module?.rules) {
+        config.module.rules = config.module?.rules?.map(
+            (rule) => {
+                if (
+                    /svg/.test(
+                        (rule as RuleSetRule).test as string
+                    )
+                ) {
+                    return {
+                        ...(rule as RuleSetRule),
+                        exclude: /\.svg$/i
+                    }
+                }
+                return rule
+            }
+        )
+        config.module.rules.push(buildSvgLoader())
+        config.module.rules.push(buildCssLoader(true))
+    }
 
     return config
 }
