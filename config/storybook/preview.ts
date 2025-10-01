@@ -1,6 +1,7 @@
+import { Theme } from "./../../src/app/providers/ThemeProvider/lib/ThemeContext"
+import { StyleDecorator } from "./../../src/shared/config/storybook/StyleDecorator/StyleDecorator"
+import { ThemeDecorator } from "./../../src/shared/config/storybook/ThemeDecorator/ThemeDecorator"
 import type { Preview } from "@storybook/react-webpack5"
-import React from "react"
-import { StyleDecorator } from "./StyleDecorator"
 
 const preview: Preview = {
     parameters: {
@@ -11,25 +12,9 @@ const preview: Preview = {
             }
         }
     },
-    /**
-     * Create wrapper with theme value for passing scss variables
-     */
     decorators: [
         (Story) => StyleDecorator(Story),
-        (Story) =>
-            React.createElement(
-                "div",
-                {
-                    className: "app light",
-                    style: {
-                        minHeight: "auto",
-                        padding: 0,
-                        background: "transparent",
-                        display: "block"
-                    }
-                },
-                React.createElement(Story)
-            )
+        (Story) => ThemeDecorator(Theme.DARK)(Story)
     ]
 }
 
