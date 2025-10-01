@@ -1,5 +1,6 @@
 import type { Preview } from "@storybook/react-webpack5"
 import React from "react"
+import { StyleDecorator } from "./StyleDecorator"
 
 const preview: Preview = {
     parameters: {
@@ -14,6 +15,7 @@ const preview: Preview = {
      * Create wrapper with theme value for passing scss variables
      */
     decorators: [
+        (Story) => StyleDecorator(Story),
         (Story) =>
             React.createElement(
                 "div",

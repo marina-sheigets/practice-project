@@ -1,5 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react-webpack5';
-import '@/app/styles/index.scss';
 import { fn } from 'storybook/test';
 
 import { Button, ButtonProps, ButtonTheme } from './Button';
