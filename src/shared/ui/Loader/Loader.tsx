@@ -2,7 +2,7 @@ import { classNames } from "@/shared/lib/classNames/classNames";
 import * as styles from "./Loader.module.scss";
 import { FC } from "react";
 
-interface LoaderProps {
+export interface LoaderProps {
   className?: string;
 }
 
