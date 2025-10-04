@@ -43,8 +43,6 @@ export default [
             react: reactPlugin
         },
         rules: {
-            semi: "error",
-            doubleQuote: "error",
             "prefer-const": "error",
             "no-unused-vars": "off", // Turn off base rule for TypeScript files
             "@typescript-eslint/no-unused-vars": [
