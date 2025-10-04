@@ -30,6 +30,23 @@
 }
 
 .square {
-    width: 40px;
-    height: 40px;
+    padding: 0;
+}
+
+.square.size_s {
+    width: var(--button-size-s);
+    height: var(--button-size-s);
+    font-size: var(--font-size-s);
+}
+
+.square.size_m {
+    width: var(--button-size-m);
+    height: var(--button-size-m);
+    font-size: var(--font-size-m);
+}
+
+.square.size_l {
+    width: var(--button-size-l);
+    height: var(--button-size-l);
+    font-size: var(--font-size-l);
 }
