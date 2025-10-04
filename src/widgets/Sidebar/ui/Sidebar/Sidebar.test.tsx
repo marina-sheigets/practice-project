@@ -1,4 +1,4 @@
-import { fireEvent, screen } from "@testing-library/react";
+import { userEvent } from "@testing-library/user-event";
 import { Sidebar } from "./Sidebar";
 import { renderWithTranslation } from "@/shared/lib/tests/renderWithTranslation/renderWithTranslation";
 
@@ -8,16 +8,16 @@ jest.mock("./Sidebar.module.scss", () => ({
 
 describe("Sidebar", () => {
   test("render", () => {
-    renderWithTranslation(<Sidebar />);
+    const screen = renderWithTranslation(<Sidebar />);
     expect(screen.getByTestId("sidebar")).toBeInTheDocument();
   });
 
-  test("toggle sidebar collapse", () => {
-    renderWithTranslation(<Sidebar />);
+  test("toggle sidebar collapse", async () => {
+    const screen = renderWithTranslation(<Sidebar />);
     const toggleButton = screen.getAllByRole("button")[0];
-    fireEvent.click(toggleButton);
+    await userEvent.click(toggleButton);
     expect(screen.getByTestId("sidebar")).toHaveClass(/collapsed/i);
-    fireEvent.click(toggleButton);
+    await userEvent.click(toggleButton);
     expect(screen.getByTestId("sidebar")).not.toHaveClass(/collapsed/i);
   });
 });
