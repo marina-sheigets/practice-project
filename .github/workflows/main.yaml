@@ -10,15 +10,15 @@ jobs:
         strategy:
             matrix:
                 node-version: [17.x, 18.x]
-    steps:
-        - uses: actions/checkout@v3
-        - name: Use Node.js ${{ matrix.node-version }}
-          uses: actions/setup-node@v3
-          with:
-              node-version: ${{ matrix.node-version }}
-        - name: Install dependencies
-          run: npm install
-        - name: Running jobs
-          run: npm run lint:ts
-        - run: npm run lint:style
-        - run: npm run test
+        steps:
+            - uses: actions/checkout@v3
+            - name: Use Node.js ${{ matrix.node-version }}
+              uses: actions/setup-node@v3
+              with:
+                  node-version: ${{ matrix.node-version }}
+            - name: Install dependencies
+              run: npm install
+            - name: Running jobs
+              run: npm run lint:ts
+            - run: npm run lint:style
+            - run: npm run test
