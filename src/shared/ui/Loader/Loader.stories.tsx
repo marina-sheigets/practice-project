@@ -1,6 +1,5 @@
 import type {
     Meta,
-    StoryObj
 } from "@storybook/react-webpack5"
 
 import { ThemeDecorator } from "@/shared/config/storybook/ThemeDecorator/ThemeDecorator"
@@ -15,7 +14,6 @@ const meta = {
     args: {}
 } satisfies Meta<typeof Loader>
 
-type Story = StoryObj<typeof meta>;
 
 const Template = (args: LoaderProps) => (
     <Loader {...args} />
