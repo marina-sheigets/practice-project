@@ -33,4 +33,16 @@ Outline.args = {
 	children: 'Text',
 };
 
+export const Transparent: StoryObj<typeof Button> = Template.bind({});
+Transparent.args = {
+	theme: ButtonTheme.TRANSPARENT,
+	children: 'Text',
+};
+
+export const TransparentInverted: StoryObj<typeof Button> = Template.bind({});
+TransparentInverted.args = {
+	theme: ButtonTheme.TRANSPARENT_INVERTED,
+	children: 'Text',
+};
+
 export default meta;
