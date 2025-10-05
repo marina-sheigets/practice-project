@@ -2,8 +2,7 @@ import { classNames } from "@/shared/lib/classNames/classNames";
 import * as styles from "./Sidebar.module.scss";
 import { FC, useState } from "react";
 import { ThemeSwitcher } from "@/widgets/ThemeSwitcher";
-import { Button } from "@/shared/ui/Button/Button";
-import { useTranslation } from "react-i18next";
+import { Button, ButtonSize, ButtonTheme } from "@/shared/ui/Button/Button";
 import { LanguageSwitcher } from "@/widgets/LanguageSwitcher";
 
 export interface SidebarProps {
@@ -11,8 +10,6 @@ export interface SidebarProps {
 }
 
 export const Sidebar: FC<SidebarProps> = ({ className }) => {
-  const { t } = useTranslation();
-
   const [isCollapsed, setIsCollapsed] = useState(false);
 
   const onToggle = () => {
@@ -28,12 +25,14 @@ export const Sidebar: FC<SidebarProps> = ({ className }) => {
         [className]
       )}
     >
-      <Button onClick={onToggle}>{t("Collapse")}</Button>
+      <Button size={ButtonSize.L} onClick={onToggle} className={styles.collapseBtn} theme={ButtonTheme.TRANSPARENT_INVERTED} square>
+        {isCollapsed ? '>' : '<'}
+      </Button>
 
       <div className={styles.switchers}>
         <ThemeSwitcher />
-        <LanguageSwitcher className={styles.languageSwitcher} />
+        <LanguageSwitcher className={styles.languageSwitcher} isShort={isCollapsed} />
       </div>
-    </div>
+    </div >
   );
 };
