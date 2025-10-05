@@ -7,6 +7,8 @@ import { LanguageSwitcher } from "@/widgets/LanguageSwitcher";
 import { AppLink, AppLinkTheme } from "@/shared/ui/AppLink/AppLink";
 import { useTranslation } from "react-i18next";
 import { RoutePath } from "@/shared/config/routeConfig/routeConfig";
+import AboutIcon from '@/shared/assets/icons/about.svg';
+import HomeIcon from '@/shared/assets/icons/home.svg';
 
 export interface SidebarProps {
   className?: string;
@@ -39,19 +41,27 @@ export const Sidebar: FC<SidebarProps> = ({ className }) => {
         {isCollapsed ? '>' : '<'}
       </Button>
       <div className={styles.items}>
-        <AppLink
-          to={RoutePath.main}
-          className={styles.link}
-          theme={AppLinkTheme.SECONDARY}
-        >
-          {t("Main")}
-        </AppLink>
-        <AppLink
-          to={RoutePath.about}
-          className={styles.link}
-          theme={AppLinkTheme.SECONDARY}>
-          {t("About")}
-        </AppLink>
+        <div className={styles.item}>
+          <AppLink
+            to={RoutePath.main}
+            theme={AppLinkTheme.SECONDARY}
+          >
+            <HomeIcon className={styles.icon} />
+            <span className={styles.link}>
+              {t("Main")}
+            </span>
+          </AppLink>
+        </div>
+        <div className={styles.item}>
+          <AppLink
+            to={RoutePath.about}
+            theme={AppLinkTheme.SECONDARY}>
+            <AboutIcon className={styles.icon} />
+            <span className={styles.link}>
+              {t("About")}
+            </span>
+          </AppLink>
+        </div>
       </div>
       <div className={styles.switchers}>
         <ThemeSwitcher />
