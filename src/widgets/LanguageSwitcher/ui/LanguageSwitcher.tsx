@@ -8,14 +8,25 @@ import { FC } from "react";
 
 interface LanguageSwitcherProps {
   className?: string;
+  isShort?: boolean
 }
 
-const LanguageSwitcher: FC<LanguageSwitcherProps> = ({ className }) => {
+const LanguageSwitcher: FC<LanguageSwitcherProps> = ({ className, isShort = false }) => {
   const { t } = useTranslation();
 
   const onToggleLang = () => {
     i18n.changeLanguage(i18n.language === "en" ? "uk" : "en");
   };
+
+  const getLabel = () => {
+    if (isShort) {
+      return i18n.language === "en" ? t("To Ukrainian") : t("To English")
+    }
+
+    return i18n.language === "en"
+      ? t("Change language to Ukrainian")
+      : t("Change language to English")
+  }
 
   return (
     <Button
@@ -23,9 +34,7 @@ const LanguageSwitcher: FC<LanguageSwitcherProps> = ({ className }) => {
       theme={ButtonTheme.CLEAR}
       onClick={onToggleLang}
     >
-      {i18n.language === "en"
-        ? t("Change language to Ukrainian")
-        : t("Change language to English")}
+      {getLabel()}
     </Button>
   );
 };
