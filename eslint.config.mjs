@@ -5,6 +5,7 @@ import js from "@eslint/js"
 import tseslint from "@typescript-eslint/eslint-plugin"
 import tsParser from "@typescript-eslint/parser"
 import reactPlugin from "eslint-plugin-react"
+import reactHooksPlugin from "eslint-plugin-react-hooks"
 import globals from "globals"
 import i18next from "eslint-plugin-i18next"
 import jest from "eslint-plugin-jest"
@@ -40,9 +41,12 @@ export default [
         },
         plugins: {
             "@typescript-eslint": tseslint,
-            react: reactPlugin
+            react: reactPlugin,
+            "react-hooks": reactHooksPlugin
         },
         rules: {
+            "react-hooks/rules-of-hooks": "error",
+            "react-hooks/exhaustive-deps": "error",
             "prefer-const": "error",
             "no-unused-vars": "off", // Turn off base rule for TypeScript files
             "@typescript-eslint/no-unused-vars": [
