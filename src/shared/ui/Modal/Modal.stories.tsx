@@ -1,6 +1,5 @@
 import type {
     Meta,
-    StoryObj
 } from "@storybook/react-webpack5"
 
 import { ThemeDecorator } from "@/shared/config/storybook/ThemeDecorator/ThemeDecorator"
@@ -15,8 +14,6 @@ const meta = {
     args: {}
 } satisfies Meta<typeof Modal>
 
-type Story = StoryObj<typeof meta>;
-
 const Template = (args: ReturnType<typeof Modal>) => (
     <Modal {...args} />
 )
@@ -27,13 +24,12 @@ LightModal.args = {
     isOpened: true,
 }
 
-export const DarkModal: Story = {
-    decorators: [ThemeDecorator(Theme.DARK)]
-}
+export const DarkModal = Template.bind({})
 DarkModal.args = {
     children: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorum, ut?",
     isOpened: true,
 }
 
+DarkModal.decorators = [ThemeDecorator(Theme.DARK)]
 
 export default meta
