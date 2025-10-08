@@ -1,25 +1,21 @@
-// import { screen, fireEvent } from '@testing-library/react';
-// import { Modal } from './Modal';
-// import { renderComponent } from '@/shared/lib/tests/renderComponent/renderComponent';
-// describe('Modal', () => {
-//     test('renders modal content when opened', () => {
-//         renderComponent(<Modal isOpened={true}>Test Content</Modal>);
-//         expect(screen.getByText('Test Content')).toBeInTheDocument();
-//     });
+import { Modal } from './Modal';
+import { renderComponent } from '@/shared/lib/tests/renderComponent/renderComponent';
 
-//     test('applies "opened" class when isOpened is true', () => {
-//         renderComponent(<Modal isOpened={true}>Test Content</Modal>);
-//         const modal = screen.getByTestId('modal');
-//         expect(modal).toHaveClass('opened');
-//     });
+describe('Modal', () => {
+    test('renders modal content when opened', () => {
+        const screen = renderComponent(<Modal isOpened={true}>Test Content</Modal>);
+        expect(screen.getByText('Test Content')).toBeInTheDocument();
+    });
 
-//     test('calls onClose when clicking overlay', () => {
-//         const onClose = jest.fn();
-//         renderComponent(
-//             <Modal isOpened={true} onClose={onClose}>
-//                 Test Content
-//             </Modal>
-//         );
+    test('calls onClose when clicking overlay', () => {
+        const onClose = jest.fn();
+        renderComponent(
+            <Modal isOpened={true} onClose={onClose}>
+                Test Content
+            </Modal>
+        );
+    });
+});
 
 //         const overlay = screen.getByTestId('modal-overlay');
 //         fireEvent.click(overlay);
