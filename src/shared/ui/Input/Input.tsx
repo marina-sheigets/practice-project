@@ -4,7 +4,7 @@ import * as styles from './Input.module.scss'
 
 type HTMLInputProps = Omit<React.InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange'>
 
-interface InputProps extends HTMLInputProps {
+export interface InputProps extends HTMLInputProps {
     className?: string,
     value?: string,
     onChange?: (value: string) => void,
